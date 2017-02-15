@@ -27,28 +27,23 @@ public class BoardServiceImpl implements BoardService{
 		}
 		return list;
 	}
+	
 
 	@Override
 	public List <ArticleBean> list() {
 		return list;
 	}
+	/*public List<ArticleBean> list(){
+	 * }*/ 
 
 	@Override
 	public void update(ArticleBean param) {
 		for(ArticleBean art:list){
-			/*String a=*/
+			/*String a="";
+			 * a+=art */
 			if(param.getSeq().equals(art.getSeq())){
-				if(art.getTitle().equals("")){
-					art.setTitle(art.getTitle());
-				}else{
-					art.setTitle(param.getTitle());
-				}
-				/*()?:;*/
-				if(art.getContent().equals("")){
-					art.setContent(art.getContent());
-				}else{
-					art.setContent(param.getContent());
-				}
+				art.setUid((param.getUid().equals(""))?art.getUid():param.getUid());
+				art.setTitle((param.getTitle().equals(""))?art.getTitle():param.getTitle());
 				break;
 			}
 		}

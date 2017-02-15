@@ -1,12 +1,14 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 
 import util.RandomGenerator;
 
-public class AccountBean {
+public class AccountBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 	protected String uid, accountType, createDate, money ,accountNo;
 	protected int createAccountNo;
 	public AccountBean(){}   //over loading 

@@ -36,7 +36,6 @@ public class BoardController {
 				JOptionPane.showMessageDialog(null, a.toString());
 				break;
 			case FIND_ONE:
-				
 				break;
 			case FIND_SOME:
 				

@@ -6,14 +6,14 @@ import javax.swing.JOptionPane;
 
 import domain.AccountBean;
 import domain.MemberBean;
-import service.AdminService;
+import service.AdminService2;
 import serviceImpl.AccountServiceImpl;
-import serviceImpl.AdminServiceImpl;
+import serviceImpl.AdminServiceImpl2;
 
 public class AdminController2 {
 	public void start(){
 		  MemberBean member=null;
-	      AdminService service=new AdminServiceImpl();
+	      AdminService2 service=new AdminServiceImpl2();
 			String ssn="";
 			String uid="";
 			int i=0;

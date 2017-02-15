@@ -1,6 +1,6 @@
 package Customercontroller;
 
-import java.util.Scanner;
+import java.util.*;
 
 import javax.swing.JOptionPane;
 
@@ -50,53 +50,35 @@ public class AdminController {
 					break;
 				case FIND_BY_ID:
 					String keyword= JOptionPane.showInputDialog("ID를 입력하세요.");
-					if(service.exist(keyword)){
+					if(keyword.equals(service.mapFindByName(keyword))){
 						JOptionPane.showMessageDialog(null,service.findById(keyword).toString());
 					}else{
 						JOptionPane.showMessageDialog(null,"존재하지 않는 ID입니다.");
 					}
-				
-			/*		JOptionPane.showMessageDialog(null,
-							service.findById(JOptionPane.showInputDialog("ID를 입력하세요")).toString());*/
-						
 					break;
 				case FIND_BY_NAME:
-					String result=JOptionPane.showInputDialog("이름을 입력하세요.");
-					if(service.exist(result)){
-						MemberBean[] list=service.findByName(result);
-						for(i=0;i<service.count();i++){
-							JOptionPane.showMessageDialog(null, service.findByName(result).toString());
-							break;
-						}
+					String name= JOptionPane.showInputDialog("이름을 입력하세요.");
+					if(name.equals(service.mapFindByName(name))){
+						JOptionPane.showMessageDialog(null,service.findByName(name).toString());
 					}else{
 						JOptionPane.showMessageDialog(null,"존재하지 않는 이름 입니다.");
 					}
-					
 					break;
+		
 				case LIST: //회원이 없습니다. 
 					if(service.count()==0){
-						JOptionPane.showMessageDialog(null,"존재하지 않는 회원입니다."); // 유호성 check
+						JOptionPane.showMessageDialog(null,"존재하지 않는 ID입니다.");
 					}else{
-						MemberBean[] arr=service.list();
-						String result2="";
-						for(i=0;i<service.count();i++){
-							 result2+= arr[i].toString()+"\n";
-						}
-						JOptionPane.showMessageDialog(null,result2);
+						JOptionPane.showMessageDialog(null, service.memberlist().toString());
 					}
-					
-				/*	 MemberBean[] arr =service.list();
-					service =new AdminServiceImpl();
-					JOptionPane.showMessageDialog(null,arr[0].getName());
-					 //회원 배열 불러와야함 
-				*/
 					break;
 				case RANK:
-					String temp2=JOptionPane.showInputDialog("ID,Rank?");
-					String[]tempArr=temp2.split(",");
-					member.setUid(tempArr[0]);
-					member.setRank(tempArr[1]);
-					service.changeRank(member);
+					member =new MemberBean();
+					member.setUid(JOptionPane.showInputDialog("ID?"));
+					member.setName(JOptionPane.showInputDialog("NAME?"));
+					member.setPhone(JOptionPane.showInputDialog("PHONE?"));
+					member.setEmail(JOptionPane.showInputDialog("EMAIL?"));
+					service.update(member);
 					break;
 				case DELETE:
 					String remove= JOptionPane.showInputDialog("삭제할 ID를 입력하여 주세요.");
@@ -107,5 +89,3 @@ public class AdminController {
 			}
 		}
 }
-
-
